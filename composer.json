@@ -1,7 +1,7 @@
 {
     "name": "ivopetkov/html-server-components-bearframework-addon",
     "description": "HTML Server Components addon for Bear Framework",
-    "keywords": ["HTML Server Components", "HTML", "addon", "Bear Framework"],
+    "keywords": ["HTML Server Components", "HTML", "Bear Framework addon"],
     "homepage": "https://github.com/ivopetkov/html-server-components-bearframework-addon",
     "license": "MIT",
     "authors": [
@@ -13,8 +13,8 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "bearframework/bearframework": "*",
-        "ivopetkov/html-server-components-compiler": "*"
+        "bearframework/bearframework": "0.8.*",
+        "ivopetkov/html-server-components-compiler": "0.2.*"
     },
     "autoload": {
         "files": ["autoload.php"]

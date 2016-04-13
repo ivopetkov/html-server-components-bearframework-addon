@@ -14,7 +14,7 @@ $app->classes->add(HTMLServerComponents::class, $context->dir . 'src/HTMLServerC
 $app->classes->add(HTMLServerComponents\Compiler::class, $context->dir . 'src/HTMLServerComponents/Compiler.php');
 $app->classes->add(HTMLServerComponents\Component::class, $context->dir . 'src/HTMLServerComponents/Component.php');
 
-$app->container->set('components', HTMLServerComponents::class, ['singleton']);
+$app->container->set('components', HTMLServerComponents::class);
 
 $app->hooks->add('responseCreated', function($response) use($app) {
     if ($response instanceof App\Response\HTML) {
