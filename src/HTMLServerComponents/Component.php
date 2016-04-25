@@ -12,7 +12,7 @@ namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 /**
  * HTML Server Components object
  */
-class Component extends \HTMLServerComponent
+class Component extends \IvoPetkov\HTMLServerComponent
 {
 
     /**
