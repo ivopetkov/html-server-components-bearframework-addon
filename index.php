@@ -10,9 +10,9 @@
 use \BearFramework\App;
 use IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
-$app->classes->add(HTMLServerComponents::class, $context->dir . 'src/HTMLServerComponents.php');
-$app->classes->add(HTMLServerComponents\Compiler::class, $context->dir . 'src/HTMLServerComponents/Compiler.php');
-$app->classes->add(HTMLServerComponents\Component::class, $context->dir . 'src/HTMLServerComponents/Component.php');
+$context->classes->add(HTMLServerComponents::class, 'src/HTMLServerComponents.php');
+$context->classes->add(HTMLServerComponents\Compiler::class, 'src/HTMLServerComponents/Compiler.php');
+$context->classes->add(HTMLServerComponents\Component::class, 'src/HTMLServerComponents/Component.php');
 
 $app->container->set('components', HTMLServerComponents::class);
 
