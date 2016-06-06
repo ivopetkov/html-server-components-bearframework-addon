@@ -20,4 +20,4 @@ $app->hooks->add('responseCreated', function($response) use($app) {
     if ($response instanceof App\Response\HTML) {
         $response->content = $app->components->process($response->content);
     }
-});
+}, ['priority' => 1000]);
