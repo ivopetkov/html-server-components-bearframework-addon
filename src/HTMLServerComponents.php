@@ -56,9 +56,8 @@ class HTMLServerComponents
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
             return $compiler->process($content);
-        } else {
-            return $content;
         }
+        return $content;
     }
 
 }
