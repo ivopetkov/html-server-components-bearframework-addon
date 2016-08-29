@@ -42,10 +42,11 @@ class HTMLServerComponents
     /**
      * Runs the compiler over the content specified
      * @param string $content The content to be processed
+     * @param array $options
      * @throws \InvalidArgumentException
      * @return string The processed content
      */
-    public function process($content)
+    public function process($content, $options = [])
     {
         if (!is_string($content)) {
             throw new \InvalidArgumentException('');
@@ -55,7 +56,7 @@ class HTMLServerComponents
             foreach ($this->aliases as $alias) {
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
-            return $compiler->process($content);
+            return $compiler->process($content, $options);
         }
         return $content;
     }
