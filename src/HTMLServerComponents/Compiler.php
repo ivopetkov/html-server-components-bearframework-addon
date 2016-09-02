@@ -33,25 +33,18 @@ class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
 
     /**
      * Includes the component file providing context information
-     * @param string $file The file of the component
-     * @param \BearFramework\App\Component $component The component object for the tag specified
+     * @param string $file
+     * @param array $variables
      * @throws \Exception
      * @return string
      */
-    protected function getComponentFileContent($file, $component)
+    protected function getComponentFileContent($file, $variables)
     {
         $app = \BearFramework\App::$instance;
-        if (is_file($file)) {
-            $__componentFile = $file;
-            $context = $app->getContext($file);
-            unset($file);
-            ob_start();
-            include $__componentFile;
-            $content = ob_get_clean();
-            return $content;
-        } else {
-            throw new \Exception('Invalid component file path (' . $file . ')');
-        }
+        $variables['app'] = $app;
+        $context = $app->getContext($file);
+        $variables['context'] = $context;
+        return parent::getComponentFileContent($file, $variables);
     }
 
 }

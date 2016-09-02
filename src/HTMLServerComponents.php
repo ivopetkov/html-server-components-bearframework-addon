@@ -61,4 +61,22 @@ class HTMLServerComponents
         return $content;
     }
 
+    /**
+     * 
+     * @param string $file
+     * @param array $attributes
+     * @param string $innerHTML
+     * @param array $variables
+     * @param array $options
+     * @return string
+     */
+    public function processFile($file, $attributes = [], $innerHTML = '', $variables = [], $options = [])
+    {
+        $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler();
+        foreach ($this->aliases as $alias) {
+            $compiler->addAlias($alias['alias'], $alias['original']);
+        }
+        return $compiler->processFile($file, $attributes, $innerHTML, $variables, $options);
+    }
+
 }
