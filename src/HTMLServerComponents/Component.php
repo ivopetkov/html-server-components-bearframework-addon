@@ -14,13 +14,5 @@ namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
  */
 class Component extends \IvoPetkov\HTMLServerComponent
 {
-
-    /**
-     * The constructor
-     */
-    public function __construct()
-    {
-        
-    }
-
+    
 }
