@@ -32,9 +32,9 @@ class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
     }
 
     /**
-     * Includes the component file providing context information
-     * @param string $file
-     * @param array $variables
+     * Includes the component file providing variables
+     * @param string $file The filename
+     * @param array $variables List of variables that will be available in the file
      * @throws \Exception
      * @return string
      */
