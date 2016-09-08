@@ -1,7 +1,7 @@
 # HTML Server Components
 Addon for Bear Framework
 
-This addons brings HTML Server Components to [Bear Framework](https://bearframework.com/). It automatically converts components code into HTML code when the HTML response object is created.
+This addons brings HTML Server Components to [Bear Framework](https://bearframework.com/). It automatically converts components code into HTML code when the framework executes the `responseCreated` hook.
 
 ## Download and install
 
@@ -19,17 +19,20 @@ include '/path/to/the/addon/autoload.php';
 ```
 
 ## Enable the addon
-Enable the addon in your app.
+Enable the addon for your application.
 
 ```
 $app->addons->add('ivopetkov/html-server-components-bearframework-addon');
 ```
 
 ## API
-### Create an alias
+### addAlias
 ```
 public void addAlias ( string $alias, string $original );
 ```
+Create an alias
+
+**_Parameters:_**
 
 **$alias**
 The alias
@@ -37,7 +40,11 @@ The alias
 **$original**
 The original source
 
-Example:
+**_Return value:_**
+
+void
+
+**_Example:_**
 
 Calling
 ```
@@ -52,15 +59,17 @@ instead of
 <component src="file:app/components/footer.php" />
 ```
 
-### Converts components code to HTML code
+### process
 ```
 public string process($content, $options = []);
 ```
+Converts components code to HTML code
 
-### Converts components code in a file to HTML code
+### processFile
 ```
 public string processFile($file, $attributes = [], $innerHTML = '', $variables = [], $options = []);
 ```
+Converts components code in a file to HTML code
 
 ## License
 HTML Server Components addon for Bear Framework is open-sourced software. It's free to use under the MIT license. See the [license file](https://github.com/ivopetkov/html5-dom-document-php/blob/master/LICENSE) for more information.
