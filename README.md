@@ -13,14 +13,14 @@ This addon brings HTML Server Components to [Bear Framework](https://bearframewo
 
 **Install via Composer**
 
-```
+```shell
 composer require ivopetkov/html-server-components-bearframework-addon
 ```
 
 **Download a zip file**
 
 Download the [latest release](https://github.com/ivopetkov/html-server-components-bearframework-addon/releases) from our GitHub page and include the autoload file.
-```
+```php
 include '/path/to/the/addon/autoload.php';
 ```
 
