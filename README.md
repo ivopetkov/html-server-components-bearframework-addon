@@ -33,17 +33,31 @@ $app->addons->add('ivopetkov/html-server-components-bearframework-addon');
 
 A reference to the HTML Server Components object (IvoPetkov\BearFramework\Addons\HTMLServerComponents) is available at `$app->components`
 
+### Examples
 
+Converting components code into HTML code
+```
+$content = '<component src="file:app/components/footer.php" />';
+$app->components->process($content);
+```
+Creating aliases
+```
+$app->components->addAlias('footer', 'file:app/components/footer.php');
+$content = '<component src="footer" />';
+$app->components->process($content);
+```
 
-### IvoPetkov\BearFramework\Addons\HTMLServerComponents
+### Classes
+
+#### IvoPetkov\BearFramework\Addons\HTMLServerComponents
 HTML Server Components utilities
 
-#### Properties
+##### Properties
 `private array $aliases = []` Stores aliases
 
 
 
-#### Methods
+##### Methods
 
 ```
 public void addAlias ( string $alias , string $original )
@@ -105,13 +119,13 @@ _Returns_
 
 
 
-### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler
+#### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler
 Process HTML code and transforms component tags
 
 	/* Constants */
 	const string VERSION = '0.4.0'
 
-#### Methods
+##### Methods
 
 ```
 protected \BearFramework\App\Component constructComponent ( [ array $attributes = [] ]  [, string $innerHTML = '' ] )
@@ -225,16 +239,16 @@ _Returns_
 
 
 
-### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component
+#### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component
 HTML Server Components object
 
-#### Properties
+##### Properties
 `public array $attributes = []`
 
 `public string $innerHTML = ''`
 
 
-#### Methods
+##### Methods
 
 ```
 public string|null getAttribute ( string $name [, string|null $defaultValue ] )
