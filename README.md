@@ -31,10 +31,8 @@ $app->addons->add('ivopetkov/html-server-components-bearframework-addon');
 
 ## Documentation
 
-A reference to the HTML Server Components object (IvoPetkov\BearFramework\Addons\HTMLServerComponents) is available at
-```
-$app->components
-```
+A reference to the HTML Server Components object (IvoPetkov\BearFramework\Addons\HTMLServerComponents) is available at `$app->components`
+
 
 
 ### IvoPetkov\BearFramework\Addons\HTMLServerComponents
@@ -47,9 +45,8 @@ HTML Server Components utilities
 
 #### Methods
 
-```
-public void addAlias ( string $alias , string $original )
-```
+**`public void addAlias ( string $alias , string $original )`**
+
 
 Creates an alias
 
@@ -63,9 +60,9 @@ _Parameters_
 _Returns_
 
 No value is returned
-```
-public string process ( string $content [, array $options = [] ] )
-```
+
+**`public string process ( string $content [, array $options = [] ] )`**
+
 
 Runs the compiler over the content specified
 
@@ -79,9 +76,9 @@ _Parameters_
 _Returns_
 
 The processed content
-```
-public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
-```
+
+**`public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )`**
+
 
 _Parameters_
 
@@ -108,9 +105,8 @@ Process HTML code and transforms component tags
 
 #### Methods
 
-```
-protected \BearFramework\App\Component constructComponent ( [ array $attributes = [] ]  [, string $innerHTML = '' ] )
-```
+**`protected \BearFramework\App\Component constructComponent ( [ array $attributes = [] ]  [, string $innerHTML = '' ] )`**
+
 
 Constructs a Component object
 
@@ -124,9 +120,9 @@ _Parameters_
 _Returns_
 
 A component object
-```
-protected string getComponentFileContent ( string $file , array $variables )
-```
+
+**`protected string getComponentFileContent ( string $file , array $variables )`**
+
 
 Includes the component file providing variables
 
@@ -140,9 +136,9 @@ _Parameters_
 _Returns_
 
 
-```
-public void addAlias ( string $alias , string $original )
-```
+
+**`public void addAlias ( string $alias , string $original )`**
+
 
 Registers an alias
 
@@ -156,9 +152,9 @@ _Parameters_
 _Returns_
 
 No value is returned.
-```
-public string process ( string $html [, array $options = [] ] )
-```
+
+**`public string process ( string $html [, array $options = [] ] )`**
+
 
 Process (merge) components
 
@@ -172,9 +168,9 @@ _Parameters_
 _Returns_
 
 
-```
-public string processData ( string $data [, array $options = [] ] )
-```
+
+**`public string processData ( string $data [, array $options = [] ] )`**
+
 
 _Parameters_
 
@@ -186,9 +182,9 @@ _Parameters_
 _Returns_
 
 
-```
-public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
-```
+
+**`public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )`**
+
 
 _Parameters_
 
@@ -218,9 +214,8 @@ HTML Server Components object
 
 #### Methods
 
-```
-public string|null getAttribute ( string $name [, string|null $defaultValue ] )
-```
+**`public string|null getAttribute ( string $name [, string|null $defaultValue ] )`**
+
 
 _Parameters_
 
@@ -232,9 +227,9 @@ _Parameters_
 _Returns_
 
 
-```
-public void setAttribute ( string $name , string $value )
-```
+
+**`public void setAttribute ( string $name , string $value )`**
+
 
 _Parameters_
 
@@ -246,9 +241,9 @@ _Parameters_
 _Returns_
 
 No value is returned.
-```
-public void removeAttribute ( string $name )
-```
+
+**`public void removeAttribute ( string $name )`**
+
 
 _Parameters_
 
@@ -258,9 +253,9 @@ _Parameters_
 _Returns_
 
 No value is returned.
-```
-public string|null __get ( string $name )
-```
+
+**`public string|null __get ( string $name )`**
+
 
 _Parameters_
 
@@ -270,9 +265,9 @@ _Parameters_
 _Returns_
 
 
-```
-public void __set ( string $name , string $value )
-```
+
+**`public void __set ( string $name , string $value )`**
+
 
 _Parameters_
 
@@ -284,9 +279,9 @@ _Parameters_
 _Returns_
 
 
-```
-public boolean __isset ( string $name )
-```
+
+**`public boolean __isset ( string $name )`**
+
 
 _Parameters_
 
@@ -296,9 +291,9 @@ _Parameters_
 _Returns_
 
 
-```
-public void __unset ( string $name )
-```
+
+**`public void __unset ( string $name )`**
+
 
 _Parameters_
 
@@ -308,6 +303,7 @@ _Parameters_
 _Returns_
 
 No value is returned.
+
 
 
 ## License
