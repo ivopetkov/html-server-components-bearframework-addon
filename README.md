@@ -27,7 +27,7 @@ include '/path/to/the/addon/autoload.php';
 ## Enable the addon
 Enable the addon for your application.
 
-```
+```php
 $app->addons->add('ivopetkov/html-server-components-bearframework-addon');
 ```
 
@@ -38,7 +38,7 @@ A reference to the HTML Server Components object (IvoPetkov\BearFramework\Addons
 
 ### Examples
 Let's start by creating a demo component file located at app/components/footer.php
-```
+```html
 <html>
     <body>
         <footer>This is the footer</footer>
@@ -46,13 +46,13 @@ Let's start by creating a demo component file located at app/components/footer.p
 </html>
 ```
 Converting components code into HTML code
-```
+```php
 echo $app->components->process('<component src="file:app/components/footer.php" />');
 // Output:
 // <!DOCTYPE html><html><head></head><body><footer>This is the footer</footer></body></html>
 ```
 Creating aliases
-```
+```php
 $app->components->addAlias('footer', 'file:app/components/footer.php');
 echo $app->components->process('<component src="footer" />');
 // Output:
@@ -61,13 +61,12 @@ echo $app->components->process('<component src="footer" />');
 
 ### Classes
 
-
 #### IvoPetkov\BearFramework\Addons\HTMLServerComponents
 HTML Server Components utilities
 
 ##### Methods
 
-```
+```php
 public void addAlias ( string $alias , string $original )
 ```
 
@@ -87,7 +86,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
-```
+```php
 public string process ( string $content [, array $options = [] ] )
 ```
 
@@ -107,7 +106,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result HTML code
 
-```
+```php
 public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
 ```
 
@@ -144,11 +143,11 @@ HTML Server Components compiler. Converts components code into HTML code.
 
 ##### Constants
 
-`const string VERSION = '0.4.0'`
+`const string VERSION`
 
 ##### Methods
 
-```
+```php
 protected \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component constructComponent ( [ array $attributes = [] ]  [, string $innerHTML = '' ] )
 ```
 
@@ -168,7 +167,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A component object
 
-```
+```php
 protected string getComponentFileContent ( string $file , array $variables )
 ```
 
@@ -188,7 +187,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The content of the file
 
-```
+```php
 public void addAlias ( string $alias , string $original )
 ```
 
@@ -200,7 +199,7 @@ _Parameters_
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The alias
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$original`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspnbsp;`$original`
 
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original source name
 
@@ -208,7 +207,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
-```
+```php
 public string process ( string $content [, array $options = [] ] )
 ```
 
@@ -228,7 +227,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result HTML code
 
-```
+```php
 public string processData ( string $data [, array $options = [] ] )
 ```
 
@@ -248,7 +247,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result HTML code
 
-```
+```php
 public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
 ```
 
@@ -285,13 +284,13 @@ Used to create the $component object that is passed to the corresponding file
 
 ##### Properties
 
-`public array $attributes = []` Component tag attributes
+`public array $attributes` Component tag attributes
 
-`public string $innerHTML = ''` Component tag innerHTML
+`public string $innerHTML` Component tag innerHTML
 
 ##### Methods
 
-```
+```php
 public __construct ( void )
 ```
 
@@ -301,7 +300,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned.
 
-```
+```php
 public string|null getAttribute ( string $name [, string|null $defaultValue ] )
 ```
 
@@ -321,7 +320,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The value of the attribute or the defaultValue specified
 
-```
+```php
 public void setAttribute ( string $name , string $value )
 ```
 
@@ -341,7 +340,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
-```
+```php
 public void removeAttribute ( string $name )
 ```
 
@@ -357,7 +356,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
-```
+```php
 public string|null __get ( string $name )
 ```
 
@@ -373,7 +372,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The value of the attribute or null if missing
 
-```
+```php
 public void __set ( string $name , string $value )
 ```
 
@@ -393,7 +392,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
-```
+```php
 public boolean __isset ( string $name )
 ```
 
@@ -409,7 +408,7 @@ _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TRUE if the attribute exists, FALSE otherwise
 
-```
+```php
 public void __unset ( string $name )
 ```
 
