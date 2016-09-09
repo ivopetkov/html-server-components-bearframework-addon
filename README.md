@@ -48,24 +48,22 @@ Let's start by creating a demo component file located at app/components/footer.p
 Converting components code into HTML code
 ```
 echo $app->components->process('<component src="file:app/components/footer.php" />');
-// Output: <!DOCTYPE html><html><head></head><body><footer>This is the footer</footer></body></html>
+// Output:
+// <!DOCTYPE html><html><head></head><body><footer>This is the footer</footer></body></html>
 ```
 Creating aliases
 ```
 $app->components->addAlias('footer', 'file:app/components/footer.php');
 echo $app->components->process('<component src="footer" />');
-// Output: <!DOCTYPE html><html><head></head><body><footer>This is the footer</footer></body></html>
+// Output:
+// <!DOCTYPE html><html><head></head><body><footer>This is the footer</footer></body></html>
 ```
 
 ### Classes
 
+
 #### IvoPetkov\BearFramework\Addons\HTMLServerComponents
 HTML Server Components utilities
-
-##### Properties
-`private array $aliases = []` Stores the added aliases
-
-
 
 ##### Methods
 
@@ -73,15 +71,17 @@ HTML Server Components utilities
 public void addAlias ( string $alias , string $original )
 ```
 
-
 Adds an alias
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $alias` The alias
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$alias`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $original` The original source name
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The alias
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$original`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original source name
 
 _Returns_
 
@@ -91,15 +91,17 @@ _Returns_
 public string process ( string $content [, array $options = [] ] )
 ```
 
-
 Converts components code (if any) into HTML code
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $content` The content to be processed
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$content`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []` Compiler options
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The content to be processed
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$options`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compiler options
 
 _Returns_
 
@@ -109,34 +111,40 @@ _Returns_
 public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
 ```
 
-
 Creates a component from the file specified and processes the content
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file` The file to be run as component
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$file`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []` Component object attributes
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The file to be run as component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''` Component object innerHTML
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$attributes`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables = []` List of variables that will be passes to the file. They will be available in the file scope.
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Component object attributes
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []` Compiler options
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$innerHTML`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Component object innerHTML
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$variables`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List of variables that will be passes to the file. They will be available in the file scope.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$options`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compiler options
 
 _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result HTML code
 
-
-
 #### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler
 HTML Server Components compiler. Converts components code into HTML code.
 
 ##### Constants
-`const string VERSION = '0.4.0'`
 
+`const string VERSION = '0.4.0'`
 
 ##### Methods
 
@@ -144,15 +152,17 @@ HTML Server Components compiler. Converts components code into HTML code.
 protected \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component constructComponent ( [ array $attributes = [] ]  [, string $innerHTML = '' ] )
 ```
 
-
 Constructs a component object
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []` The attributes of the component object
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$attributes`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''` The innerHTML of the component object
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The attributes of the component object
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$innerHTML`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The innerHTML of the component object
 
 _Returns_
 
@@ -162,15 +172,17 @@ _Returns_
 protected string getComponentFileContent ( string $file , array $variables )
 ```
 
-
 Includes a component file and returns its content
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file` The filename
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$file`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables` List of variables that will be passes to the file. They will be available in the file scope.
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The filename
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$variables`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List of variables that will be passes to the file. They will be available in the file scope.
 
 _Returns_
 
@@ -180,15 +192,17 @@ _Returns_
 public void addAlias ( string $alias , string $original )
 ```
 
-
 Adds an alias
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $alias` The alias
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$alias`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $original` The original source name
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The alias
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$original`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The original source name
 
 _Returns_
 
@@ -198,15 +212,17 @@ _Returns_
 public string process ( string $content [, array $options = [] ] )
 ```
 
-
 Converts components code (if any) into HTML code
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $content` The content to be processed
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$content`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []` Compiler options
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The content to be processed
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$options`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compiler options
 
 _Returns_
 
@@ -216,15 +232,17 @@ _Returns_
 public string processData ( string $data [, array $options = [] ] )
 ```
 
-
 Creates a component from the data specified and processes the content
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $data` The data to be used as component content. Currently only base64 encoded data is allowed.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$data`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []` Compiler options
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The data to be used as component content. Currently only base64 encoded data is allowed.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$options`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compiler options
 
 _Returns_
 
@@ -234,45 +252,48 @@ _Returns_
 public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )
 ```
 
-
 Creates a component from the file specified and processes the content
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file` The file to be run as component
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$file`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []` Component object attributes
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The file to be run as component
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''` Component object innerHTML
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$attributes`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables = []` List of variables that will be passes to the file. They will be available in the file scope.
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Component object attributes
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []` Compiler options
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$innerHTML`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Component object innerHTML
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$variables`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;List of variables that will be passes to the file. They will be available in the file scope.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$options`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Compiler options
 
 _Returns_
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The result HTML code
 
-
-
 #### IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component
 Used to create the $component object that is passed to the corresponding file
 
 ##### Properties
+
 `public array $attributes = []` Component tag attributes
 
-
 `public string $innerHTML = ''` Component tag innerHTML
-
-
 
 ##### Methods
 
 ```
 public __construct ( void )
 ```
-
 
 The constructor
 
@@ -284,15 +305,17 @@ _Returns_
 public string|null getAttribute ( string $name [, string|null $defaultValue ] )
 ```
 
-
 Returns value of an attribute
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string|null $defaultValue` The default value of the attribute (if missing)
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$defaultValue`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The default value of the attribute (if missing)
 
 _Returns_
 
@@ -302,15 +325,17 @@ _Returns_
 public void setAttribute ( string $name , string $value )
 ```
 
-
 Sets new value to the attribute specified
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $value` The new value of the attribute
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$value`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new value of the attribute
 
 _Returns_
 
@@ -320,13 +345,13 @@ _Returns_
 public void removeAttribute ( string $name )
 ```
 
-
 Removes attribute
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
 _Returns_
 
@@ -336,13 +361,13 @@ _Returns_
 public string|null __get ( string $name )
 ```
 
-
 Provides acccess to the component attributes via properties
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
 _Returns_
 
@@ -352,15 +377,17 @@ _Returns_
 public void __set ( string $name , string $value )
 ```
 
-
 Provides acccess to the component attributes via properties
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $value` The new value of the attribute
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$value`
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The new value of the attribute
 
 _Returns_
 
@@ -370,13 +397,13 @@ _Returns_
 public boolean __isset ( string $name )
 ```
 
-
 Provides acccess to the component attributes via properties
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
 _Returns_
 
@@ -386,13 +413,13 @@ _Returns_
 public void __unset ( string $name )
 ```
 
-
 Provides acccess to the component attributes via properties
 
 _Parameters_
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name` The name of the attribute
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`$name`
 
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The name of the attribute
 
 _Returns_
 
