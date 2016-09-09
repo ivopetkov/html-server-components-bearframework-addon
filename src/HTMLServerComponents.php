@@ -58,7 +58,7 @@ class HTMLServerComponents
             throw new \InvalidArgumentException('');
         }
         if (strpos($content, '<component') !== false) {
-            $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler();
+            $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
             foreach ($this->aliases as $alias) {
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
@@ -95,7 +95,7 @@ class HTMLServerComponents
         if (!is_array($options)) {
             throw new \InvalidArgumentException('');
         }
-        $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Compiler();
+        $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
         foreach ($this->aliases as $alias) {
             $compiler->addAlias($alias['alias'], $alias['original']);
         }

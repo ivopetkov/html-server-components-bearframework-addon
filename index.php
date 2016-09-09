@@ -11,8 +11,8 @@ use \BearFramework\App;
 use IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 $context->classes->add(HTMLServerComponents::class, 'src/HTMLServerComponents.php');
-$context->classes->add(HTMLServerComponents\Compiler::class, 'src/HTMLServerComponents/Compiler.php');
-$context->classes->add(HTMLServerComponents\Component::class, 'src/HTMLServerComponents/Component.php');
+$context->classes->add(HTMLServerComponents\Internal\Compiler::class, 'src/HTMLServerComponents/Internal/Compiler.php');
+$context->classes->add(HTMLServerComponents\Internal\Component::class, 'src/HTMLServerComponents/Internal/Component.php');
 
 $app->container->set('components', HTMLServerComponents::class);
 

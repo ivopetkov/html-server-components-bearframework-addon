@@ -7,7 +7,7 @@
  * Free to use under the MIT license.
  */
 
-namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
+namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal;
 
 /**
  * Used to create the $component object that is passed to the corresponding file

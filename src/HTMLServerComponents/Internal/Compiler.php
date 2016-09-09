@@ -7,7 +7,7 @@
  * Free to use under the MIT license.
  */
 
-namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
+namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal;
 
 /**
  * HTML Server Components compiler. Converts components code into HTML code.
@@ -20,7 +20,7 @@ class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      * 
      * @param array $attributes The attributes of the component object
      * @param string $innerHTML The innerHTML of the component object
-     * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component A component object
+     * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component A component object
      * @throws \InvalidArgumentException
      */
     protected function constructComponent($attributes = [], $innerHTML = '')
@@ -32,7 +32,7 @@ class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
             throw new \InvalidArgumentException('');
         }
         $app = \BearFramework\App::$instance;
-        $component = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component();
+        $component = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         $component->attributes = $attributes;
         $component->innerHTML = $innerHTML;
         $app->hooks->execute('componentCreated', $component);
