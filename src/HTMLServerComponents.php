@@ -17,12 +17,14 @@ class HTMLServerComponents
 
     /**
      * Stores aliases
+     * 
      * @var array 
      */
     private $aliases = [];
 
     /**
-     * Adds alias to a specifil source
+     * Creates an alias
+     * 
      * @param string $alias The alias
      * @param string $original The original source
      * @throws \InvalidArgumentException
