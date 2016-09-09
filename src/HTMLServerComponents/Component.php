@@ -10,9 +10,17 @@
 namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 /**
- * HTML Server Components object
+ * Used to create the $component object that is passed to the corresponding file
  */
 class Component extends \IvoPetkov\HTMLServerComponent
 {
-    
+
+    /**
+     * The constructor
+     */
+    function __construct()
+    {
+        
+    }
+
 }

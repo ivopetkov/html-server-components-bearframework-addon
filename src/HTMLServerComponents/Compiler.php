@@ -10,19 +10,27 @@
 namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 /**
- * Process HTML code and transforms component tags
+ * HTML Server Components compiler. Converts components code into HTML code.
  */
 class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
 {
 
     /**
-     * Constructs a Component object
-     * @param array $attributes The attributes of the component tag
-     * @param string $innerHTML The innerHTML of the component tag
-     * @return \BearFramework\App\Component A component object
+     * Constructs a component object
+     * 
+     * @param array $attributes The attributes of the component object
+     * @param string $innerHTML The innerHTML of the component object
+     * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component A component object
+     * @throws \InvalidArgumentException
      */
     protected function constructComponent($attributes = [], $innerHTML = '')
     {
+        if (!is_array($attributes)) {
+            throw new \InvalidArgumentException('');
+        }
+        if (!is_string($innerHTML)) {
+            throw new \InvalidArgumentException('');
+        }
         $app = \BearFramework\App::$instance;
         $component = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Component();
         $component->attributes = $attributes;
@@ -32,14 +40,22 @@ class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
     }
 
     /**
-     * Includes the component file providing variables
+     * Includes a component file and returns its content
+     * 
      * @param string $file The filename
-     * @param array $variables List of variables that will be available in the file
+     * @param array $variables List of variables that will be passes to the file. They will be available in the file scope.
+     * @return string The content of the file
+     * @throws \InvalidArgumentException
      * @throws \Exception
-     * @return string
      */
     protected function getComponentFileContent($file, $variables)
     {
+        if (!is_string($file)) {
+            throw new \InvalidArgumentException('');
+        }
+        if (!is_array($variables)) {
+            throw new \InvalidArgumentException('');
+        }
         $app = \BearFramework\App::$instance;
         $variables['app'] = $app;
         $context = $app->getContext($file);
