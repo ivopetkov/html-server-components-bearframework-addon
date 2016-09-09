@@ -48,8 +48,18 @@ class ComponentsTest extends BearFrameworkAddonTestCase
         $this->createFile($app->config->appDir . '/component1.php', '<!DOCTYPE html><html><head></head><body>content1<component src="file:' . $app->config->appDir . '/component2.php" /></body></html>');
         $this->createFile($app->config->appDir . '/component2.php', '<!DOCTYPE html><html><head></head><body>content2</body></html>');
 
+        $app->components->addAlias('component1', 'file:' . $app->config->appDir . '/component1.php');
+
+        $expectedResult = '<!DOCTYPE html><html><head></head><body>content1content2</body></html>';
+
         $result = $app->components->process('<component src="file:' . $app->config->appDir . '/component1.php" />');
-        $this->assertTrue($result === '<!DOCTYPE html><html><head></head><body>content1content2</body></html>');
+        $this->assertTrue($result === $expectedResult);
+
+        $result = $app->components->process('<component src="component1" />');
+        $this->assertTrue($result === $expectedResult);
+
+        $result = $app->components->processFile($app->config->appDir . '/component1.php');
+        $this->assertTrue($result === $expectedResult);
     }
 
     /**
