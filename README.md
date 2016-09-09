@@ -52,14 +52,14 @@ Creates an alias
 
 _Parameters_
 
-`string $alias` The alias
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $alias` The alias
 
-`string $original` The original source
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $original` The original source
 
 
 _Returns_
 
-No value is returned
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned
 
 **`public string process ( string $content [, array $options = [] ] )`**
 
@@ -68,32 +68,34 @@ Runs the compiler over the content specified
 
 _Parameters_
 
-`string $content` The content to be processed
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $content` The content to be processed
 
-`array $options = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []`
 
 
 _Returns_
 
-The processed content
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The processed content
 
 **`public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )`**
 
 
 _Parameters_
 
-`string $file`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file`
 
-`array $attributes = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []`
 
-`string $innerHTML = ''`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''`
 
-`array $variables = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables = []`
 
-`array $options = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []`
 
 
 _Returns_
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
@@ -112,14 +114,14 @@ Constructs a Component object
 
 _Parameters_
 
-`array $attributes = []` The attributes of the component tag
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []` The attributes of the component tag
 
-`string $innerHTML = ''` The innerHTML of the component tag
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''` The innerHTML of the component tag
 
 
 _Returns_
 
-A component object
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A component object
 
 **`protected string getComponentFileContent ( string $file , array $variables )`**
 
@@ -128,14 +130,14 @@ Includes the component file providing variables
 
 _Parameters_
 
-`string $file` The filename
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file` The filename
 
-`array $variables` List of variables that will be available in the file
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables` List of variables that will be available in the file
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public void addAlias ( string $alias , string $original )`**
 
@@ -144,14 +146,14 @@ Registers an alias
 
 _Parameters_
 
-`string $alias`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $alias`
 
-`string $original`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $original`
 
 
 _Returns_
 
-No value is returned.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned.
 
 **`public string process ( string $html [, array $options = [] ] )`**
 
@@ -160,46 +162,48 @@ Process (merge) components
 
 _Parameters_
 
-`string $html`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $html`
 
-`array $options = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public string processData ( string $data [, array $options = [] ] )`**
 
 
 _Parameters_
 
-`string $data`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $data`
 
-`array $options = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public string processFile ( string $file [, array $attributes = [] ]  [, string $innerHTML = '' ]  [, array $variables = [] ]  [, array $options = [] ] )`**
 
 
 _Parameters_
 
-`string $file`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $file`
 
-`array $attributes = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $attributes = []`
 
-`string $innerHTML = ''`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $innerHTML = ''`
 
-`array $variables = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $variables = []`
 
-`array $options = []`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`array $options = []`
 
 
 _Returns_
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 
@@ -219,90 +223,93 @@ HTML Server Components object
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
-`string|null $defaultValue`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string|null $defaultValue`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public void setAttribute ( string $name , string $value )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
-`string $value`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $value`
 
 
 _Returns_
 
-No value is returned.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned.
 
 **`public void removeAttribute ( string $name )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
 
 _Returns_
 
-No value is returned.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned.
 
 **`public string|null __get ( string $name )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public void __set ( string $name , string $value )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
-`string $value`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $value`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public boolean __isset ( string $name )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
 
 _Returns_
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 **`public void __unset ( string $name )`**
 
 
 _Parameters_
 
-`string $name`
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`string $name`
 
 
 _Returns_
 
-No value is returned.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No value is returned.
+
+
+
 
 
 
