@@ -56,6 +56,7 @@ class ComponentsTest extends BearFrameworkAddonTestCase
         $app->addons->add('vendor1/addon1');
         $result = $app->components->process('<component src="file:' . $app->config->addonsDir . '/vendor1/addon1/component1.php">text1</component>');
         $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AddonContext' . realpath($app->config->addonsDir . '\vendor1\addon1') . 'text1</body></html>';
+        echo $app->config->addonsDir . '\vendor1\addon1';
         echo $result;
         echo $expectedResult;
         exit;
