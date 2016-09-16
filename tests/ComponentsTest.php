@@ -58,6 +58,12 @@ class ComponentsTest extends BearFrameworkAddonTestCase
         $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AddonContext' . realpath($app->config->addonsDir . '\vendor1\addon1') . 'text1</body></html>';
         echo $app->config->addonsDir . '\vendor1\addon1';
         echo "|";
+        echo (int) is_dir($app->config->addonsDir);
+        echo "|";
+        echo (int) is_dir($app->config->addonsDir . '\vendor1');
+        echo "|";
+        echo (int) is_dir($app->config->addonsDir . '\vendor1\addon1');
+        echo "|";
         echo realpath($app->config->addonsDir . '\vendor1\addon1');
         echo "|";
         echo realpath($app->config->addonsDir . '\vendor1\addon1/');
