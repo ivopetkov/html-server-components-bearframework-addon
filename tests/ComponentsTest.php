@@ -41,6 +41,27 @@ class ComponentsTest extends BearFrameworkAddonTestCase
     /**
      * 
      */
+    public function testDefaultVariables()
+    {
+        $app = $this->getApp();
+
+        $this->createFile($app->config->appDir . '/component1.php', '<!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= $context->dir;?><?= $component->innerHTML;?></body></html>');
+        $result = $app->components->process('<component src="file:' . $app->config->appDir . '/component1.php">text1</component>');
+        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AppContext' . $app->config->appDir . 'text1</body></html>';
+        $this->assertTrue($result === $expectedResult);
+
+        $this->createFile($app->config->addonsDir . '/vendor1/addon1/component1.php', '<!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= $context->dir;?><?= $component->innerHTML;?></body></html>');
+        $this->createFile($app->config->addonsDir . '/vendor1/addon1/index.php', '');
+        \BearFramework\Addons::register('vendor1/addon1', $app->config->addonsDir . '/vendor1/addon1/');
+        $app->addons->add('vendor1/addon1');
+        $result = $app->components->process('<component src="file:' . $app->config->addonsDir . '/vendor1/addon1/component1.php">text1</component>');
+        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AddonContext' . $app->config->addonsDir . '\vendor1\addon1text1</body></html>';
+        $this->assertTrue($result === $expectedResult);
+    }
+
+    /**
+     * 
+     */
     public function testFile()
     {
         $app = $this->getApp();
