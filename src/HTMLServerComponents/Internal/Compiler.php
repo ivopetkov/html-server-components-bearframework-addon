@@ -12,7 +12,7 @@ namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal;
 /**
  * HTML Server Components compiler. Converts components code into HTML code.
  */
-class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
+final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
 {
 
     /**
