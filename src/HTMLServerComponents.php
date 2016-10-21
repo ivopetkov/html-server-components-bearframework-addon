@@ -51,55 +51,35 @@ class HTMLServerComponents
      */
     public function process($content, $options = [])
     {
-        if (!is_string($content)) {
+        if (!is_string($content) && !($content instanceof \IvoPetkov\HTMLServerComponent)) {
             throw new \InvalidArgumentException('');
         }
         if (!is_array($options)) {
             throw new \InvalidArgumentException('');
         }
-        if (strpos($content, '<component') !== false) {
+        if ((is_string($content) && strpos($content, '<component') !== false) || $content instanceof \IvoPetkov\HTMLServerComponent) {
             $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
             foreach ($this->aliases as $alias) {
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
+//            $app = \BearFramework\App::$instance;
+//            if (!isset($options['variables'])) {
+//                $options['variables'] = [];
+//            }
+//            $options['variables']['app'] = $app;
             return $compiler->process($content, $options);
         }
         return $content;
     }
 
     /**
-     * Creates a component from the file specified and processes the content
+     * Creates new component and return it
      * 
-     * @param string $file The file to be run as component
-     * @param array $attributes Component object attributes
-     * @param string $innerHTML Component object innerHTML
-     * @param array $variables List of variables that will be passes to the file. They will be available in the file scope.
-     * @param array $options Compiler options
-     * @return string The result HTML code
-     * @throws \InvalidArgumentException
+     * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component
      */
-    public function processFile($file, $attributes = [], $innerHTML = '', $variables = [], $options = [])
+    public function create()
     {
-        if (!is_string($file)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_array($attributes)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_string($innerHTML)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_array($variables)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_array($options)) {
-            throw new \InvalidArgumentException('');
-        }
-        $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
-        foreach ($this->aliases as $alias) {
-            $compiler->addAlias($alias['alias'], $alias['original']);
-        }
-        return $compiler->processFile($file, $attributes, $innerHTML, $variables, $options);
+        return new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
     }
 
 }

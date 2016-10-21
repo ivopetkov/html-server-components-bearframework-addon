@@ -23,7 +23,7 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component A component object
      * @throws \InvalidArgumentException
      */
-    protected function constructComponent($attributes = [], $innerHTML = '')
+    public function constructComponent($attributes = [], $innerHTML = '')
     {
         if (!is_array($attributes)) {
             throw new \InvalidArgumentException('');
@@ -37,30 +37,6 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
         $component->innerHTML = $innerHTML;
         $app->hooks->execute('componentCreated', $component);
         return $component;
-    }
-
-    /**
-     * Includes a component file and returns its content
-     * 
-     * @param string $file The filename
-     * @param array $variables List of variables that will be passes to the file. They will be available in the file scope.
-     * @return string The content of the file
-     * @throws \InvalidArgumentException
-     * @throws \Exception
-     */
-    protected function getComponentFileContent($file, $variables)
-    {
-        if (!is_string($file)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_array($variables)) {
-            throw new \InvalidArgumentException('');
-        }
-        $app = \BearFramework\App::$instance;
-        $variables['app'] = $app;
-        $context = $app->getContext($file);
-        $variables['context'] = $context;
-        return parent::getComponentFileContent($file, $variables);
     }
 
 }
