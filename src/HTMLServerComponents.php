@@ -62,7 +62,7 @@ class HTMLServerComponents
             foreach ($this->aliases as $alias) {
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
-//            $app = \BearFramework\App::$instance;
+//            $app = \BearFramework\App::get();
 //            if (!isset($options['variables'])) {
 //                $options['variables'] = [];
 //            }

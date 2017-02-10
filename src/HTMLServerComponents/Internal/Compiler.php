@@ -31,7 +31,7 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
         if (!is_string($innerHTML)) {
             throw new \InvalidArgumentException('');
         }
-        $app = \BearFramework\App::$instance;
+        $app = \BearFramework\App::get();
         $component = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         $component->attributes = $attributes;
         $component->innerHTML = $innerHTML;

@@ -11,13 +11,16 @@ use \BearFramework\App;
 use IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 $app = App::get();
-$context = $app->getContext(__FILE__);
+$context = $app->context->get(__FILE__);
 
-$context->classes->add(HTMLServerComponents::class, 'src/HTMLServerComponents.php');
-$context->classes->add(HTMLServerComponents\Internal\Compiler::class, 'src/HTMLServerComponents/Internal/Compiler.php');
-$context->classes->add(HTMLServerComponents\Internal\Component::class, 'src/HTMLServerComponents/Internal/Component.php');
+$context->classes
+        ->add(HTMLServerComponents::class, 'src/HTMLServerComponents.php')
+        ->add(HTMLServerComponents\Internal\Compiler::class, 'src/HTMLServerComponents/Internal/Compiler.php')
+        ->add(HTMLServerComponents\Internal\Component::class, 'src/HTMLServerComponents/Internal/Component.php');
 
-$app->container->set('components', HTMLServerComponents::class);
+$app->shortcuts->add('components', function() {
+    return new HTMLServerComponents();
+});
 
 $app->hooks->add('responseCreated', function($response) use($app) {
     if ($response instanceof App\Response\HTML) {
