@@ -28,7 +28,7 @@ class HTMLServerComponents
      * @param string $alias The alias
      * @param string $original The original source name
      * @throws \InvalidArgumentException
-     * @return void No value is returned
+     * @return IvoPetkov\BearFramework\Addons\HTMLServerComponents Instance of itself.
      */
     public function addAlias($alias, $original)
     {
@@ -39,6 +39,7 @@ class HTMLServerComponents
             throw new \InvalidArgumentException('');
         }
         $this->aliases[] = ['alias' => $alias, 'original' => $original];
+        return $this;
     }
 
     /**
