@@ -49,9 +49,8 @@ class ComponentsTest extends BearFrameworkAddonTestCase
                 . '$app = \BearFramework\App::get(); '
                 . '$context = $app->context->get(__FILE__); '
                 . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
-        //echo file_get_contents($app->config->appDir . '/component1.php');
         $result = $app->components->process('<component src="file:' . $app->config->appDir . '/component1.php">text1</component>');
-        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AppContext' . realpath($app->config->appDir) . 'text1</body></html>';
+        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\Context' . realpath($app->config->appDir) . 'text1</body></html>';
         $this->assertTrue($result === $expectedResult);
 
         $this->createFile($app->config->addonsDir . '/vendor1/addon1/component1.php', '<?php '
@@ -62,7 +61,7 @@ class ComponentsTest extends BearFrameworkAddonTestCase
         \BearFramework\Addons::register('vendor1/addon1', $app->config->addonsDir . '/vendor1/addon1/');
         $app->addons->add('vendor1/addon1');
         $result = $app->components->process('<component src="file:' . $app->config->addonsDir . '/vendor1/addon1/component1.php">text1</component>');
-        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\AddonContext' . realpath($app->config->addonsDir . '/vendor1/addon1') . 'text1</body></html>';
+        $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\Context' . realpath($app->config->addonsDir . '/vendor1/addon1') . 'text1</body></html>';
         $this->assertTrue($result === $expectedResult);
     }
 
