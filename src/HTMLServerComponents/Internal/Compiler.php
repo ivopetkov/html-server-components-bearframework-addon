@@ -26,16 +26,9 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      * @param array $attributes The attributes of the component object
      * @param string $innerHTML The innerHTML of the component object
      * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component A component object
-     * @throws \InvalidArgumentException
      */
-    public function constructComponent($attributes = [], $innerHTML = '')
+    public function constructComponent(array $attributes = [], string $innerHTML = '')
     {
-        if (!is_array($attributes)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_string($innerHTML)) {
-            throw new \InvalidArgumentException('');
-        }
         $app = \BearFramework\App::get();
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();

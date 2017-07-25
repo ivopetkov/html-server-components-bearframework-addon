@@ -23,21 +23,24 @@ class HTMLServerComponents
     private $aliases = [];
 
     /**
+     *
+     */
+    private static $newCompilerCache = null;
+
+    /**
+     *
+     */
+    private static $newComponentCache = null;
+
+    /**
      * Adds an alias
      * 
      * @param string $alias The alias
      * @param string $original The original source name
-     * @throws \InvalidArgumentException
      * @return IvoPetkov\BearFramework\Addons\HTMLServerComponents Instance of itself.
      */
-    public function addAlias($alias, $original)
+    public function addAlias(string $alias, string $original)
     {
-        if (!is_string($alias)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_string($original)) {
-            throw new \InvalidArgumentException('');
-        }
         $this->aliases[] = ['alias' => $alias, 'original' => $original];
         return $this;
     }
@@ -48,18 +51,14 @@ class HTMLServerComponents
      * @param string $content The content to be processed
      * @param array $options Compiler options
      * @return string The result HTML code
-     * @throws \InvalidArgumentException
      */
-    public function process($content, $options = [])
+    public function process($content, array $options = [])
     {
-        if (!is_string($content) && !($content instanceof \IvoPetkov\HTMLServerComponent)) {
-            throw new \InvalidArgumentException('');
-        }
-        if (!is_array($options)) {
-            throw new \InvalidArgumentException('');
-        }
         if ((is_string($content) && strpos($content, '<component') !== false) || $content instanceof \IvoPetkov\HTMLServerComponent) {
-            $compiler = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
+            if (self::$newCompilerCache === null) {
+                self::$newCompilerCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
+            }
+            $compiler = clone(self::$newCompilerCache);
             foreach ($this->aliases as $alias) {
                 $compiler->addAlias($alias['alias'], $alias['original']);
             }
@@ -80,7 +79,10 @@ class HTMLServerComponents
      */
     public function create()
     {
-        return new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
+        if (self::$newComponentCache === null) {
+            self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
+        }
+        return clone(self::$newComponentCache);
     }
 
 }

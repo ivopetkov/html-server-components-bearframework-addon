@@ -96,36 +96,6 @@ class ComponentsTest extends BearFrameworkAddonTestCase
     /**
      * 
      */
-    public function testInvalidArguments1()
-    {
-        $app = $this->getApp();
-        $this->setExpectedException('InvalidArgumentException');
-        $app->components->addAlias(1, 'longName');
-    }
-
-    /**
-     * 
-     */
-    public function testInvalidArguments2()
-    {
-        $app = $this->getApp();
-        $this->setExpectedException('InvalidArgumentException');
-        $app->components->addAlias('shortName', 1);
-    }
-
-    /**
-     * 
-     */
-    public function testInvalidArguments3()
-    {
-        $app = $this->getApp();
-        $this->setExpectedException('InvalidArgumentException');
-        $app->components->process(1);
-    }
-
-    /**
-     * 
-     */
     public function testInvalidArguments7a()
     {
         $app = $this->getApp();
