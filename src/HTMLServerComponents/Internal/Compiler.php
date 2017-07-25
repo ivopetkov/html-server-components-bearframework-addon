@@ -16,6 +16,11 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
 {
 
     /**
+     *
+     */
+    private static $newComponentCache = null;
+
+    /**
      * Constructs a component object
      * 
      * @param array $attributes The attributes of the component object
@@ -32,7 +37,10 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
             throw new \InvalidArgumentException('');
         }
         $app = \BearFramework\App::get();
-        $component = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
+        if (self::$newComponentCache === null) {
+            self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
+        }
+        $component = clone(self::$newComponentCache);
         $component->attributes = $attributes;
         $component->innerHTML = $innerHTML;
         $app->hooks->execute('componentCreated', $component);
