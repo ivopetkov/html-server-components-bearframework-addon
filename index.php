@@ -26,4 +26,4 @@ $app->hooks->add('responseCreated', function($response) use($app) {
     if (strpos($response->content, '<component') !== false) { // $response instanceof App\Response\HTML does not update NotFound and TemporaryUnavailable responses
         $response->content = $app->components->process($response->content);
     }
-}, ['priority' => 1000]);
+});
