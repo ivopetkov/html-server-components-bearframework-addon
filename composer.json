@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": ">=7.1.0",
-        "bearframework/bearframework": "0.10.*@beta",
+        "bearframework/bearframework": "0.10.*",
         "ivopetkov/html-server-components-compiler": "0.5.*|0.6.*"
     },
     "require-dev": {
