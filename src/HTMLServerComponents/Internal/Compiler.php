@@ -3,7 +3,7 @@
 /*
  * HTML Server Components addon for Bear Framework
  * https://github.com/ivopetkov/html-server-components-bearframework-addon
- * Copyright (c) 2016 Ivo Petkov
+ * Copyright (c) Ivo Petkov
  * Free to use under the MIT license.
  */
 
