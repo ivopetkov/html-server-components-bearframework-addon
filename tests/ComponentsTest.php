@@ -10,8 +10,18 @@
 /**
  * @runTestsInSeparateProcesses
  */
-class ComponentsTest extends BearFrameworkAddonTestCase
+class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
 {
+
+    /**
+     * 
+     */
+    protected function setUp()
+    {
+        parent::setUp();
+        $app = $this->getApp();
+        $app->config->addonsDir = $this->getTempDir();
+    }
 
     /**
      * 
@@ -45,7 +55,7 @@ class ComponentsTest extends BearFrameworkAddonTestCase
     {
         $app = $this->getApp();
 
-        $this->createFile($app->config->appDir . '/component1.php', '<?php '
+        $this->makeFile($app->config->appDir . '/component1.php', '<?php '
                 . '$app = \BearFramework\App::get(); '
                 . '$context = $app->context->get(__FILE__); '
                 . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
@@ -53,11 +63,11 @@ class ComponentsTest extends BearFrameworkAddonTestCase
         $expectedResult = '<!DOCTYPE html><html><head></head><body>BearFramework\App\Context' . realpath($app->config->appDir) . 'text1</body></html>';
         $this->assertTrue($result === $expectedResult);
 
-        $this->createFile($app->config->addonsDir . '/vendor1/addon1/component1.php', '<?php '
+        $this->makeFile($app->config->addonsDir . '/vendor1/addon1/component1.php', '<?php '
                 . '$app = \BearFramework\App::get(); '
                 . '$context = $app->context->get(__FILE__); '
                 . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
-        $this->createFile($app->config->addonsDir . '/vendor1/addon1/index.php', '');
+        $this->makeFile($app->config->addonsDir . '/vendor1/addon1/index.php', '');
         \BearFramework\Addons::register('vendor1/addon1', $app->config->addonsDir . '/vendor1/addon1/');
         $app->addons->add('vendor1/addon1');
         $result = $app->components->process('<component src="file:' . $app->config->addonsDir . '/vendor1/addon1/component1.php">text1</component>');
@@ -72,8 +82,8 @@ class ComponentsTest extends BearFrameworkAddonTestCase
     {
         $app = $this->getApp();
 
-        $this->createFile($app->config->appDir . '/component1.php', '<!DOCTYPE html><html><head></head><body>content1<component src="file:' . $app->config->appDir . '/component2.php" /></body></html>');
-        $this->createFile($app->config->appDir . '/component2.php', '<!DOCTYPE html><html><head></head><body>content2</body></html>');
+        $this->makeFile($app->config->appDir . '/component1.php', '<!DOCTYPE html><html><head></head><body>content1<component src="file:' . $app->config->appDir . '/component2.php" /></body></html>');
+        $this->makeFile($app->config->appDir . '/component2.php', '<!DOCTYPE html><html><head></head><body>content2</body></html>');
 
         $app->components->addAlias('component1', 'file:' . $app->config->appDir . '/component1.php');
 
@@ -99,7 +109,7 @@ class ComponentsTest extends BearFrameworkAddonTestCase
     public function testInvalidArguments7a()
     {
         $app = $this->getApp();
-        $this->setExpectedException('Exception');
+        $this->expectException('Exception');
         $app->components->process('<component src="file:missing/dir/component1.php" />');
     }
 
@@ -112,9 +122,9 @@ class ComponentsTest extends BearFrameworkAddonTestCase
 //
 //        $wrongDir = $this->getTestDir() . 'wrongdir' . uniqid() . '/';
 //        $this->createDir($wrongDir);
-//        $this->createFile($wrongDir . 'component1.php', '<!DOCTYPE html><html><head></head><body>content</body></html>');
+//        $this->makeFile($wrongDir . 'component1.php', '<!DOCTYPE html><html><head></head><body>content</body></html>');
 //
-//        $this->setExpectedException('Exception');
+//        $this->expectException('Exception');
 //        $app->components->process('<component src="file:' . $wrongDir . 'component1.php" />');
 //    }
 }

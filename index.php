@@ -14,9 +14,9 @@ $app = App::get();
 $context = $app->context->get(__FILE__);
 
 $context->classes
-        ->add(HTMLServerComponents::class, 'src/HTMLServerComponents.php')
-        ->add(HTMLServerComponents\Internal\Compiler::class, 'src/HTMLServerComponents/Internal/Compiler.php')
-        ->add(HTMLServerComponents\Internal\Component::class, 'src/HTMLServerComponents/Internal/Component.php');
+        ->add(HTMLServerComponents::class, 'classes/HTMLServerComponents.php')
+        ->add(HTMLServerComponents\Internal\Compiler::class, 'classes/HTMLServerComponents/Internal/Compiler.php')
+        ->add(HTMLServerComponents\Internal\Component::class, 'classes/HTMLServerComponents/Internal/Component.php');
 
 $app->shortcuts->add('components', function() {
     return new HTMLServerComponents();
