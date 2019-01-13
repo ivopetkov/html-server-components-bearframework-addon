@@ -16,11 +16,18 @@ class HTMLServerComponents
 {
 
     /**
-     * Stores the added aliases
+     * Stores the added aliases.
      * 
      * @var array 
      */
     private $aliases = [];
+
+    /**
+     * Stores the defined tags.
+     * 
+     * @var array 
+     */
+    private $tagNames = [];
 
     /**
      *
@@ -39,9 +46,22 @@ class HTMLServerComponents
      * @param string $original The original source name
      * @return IvoPetkov\BearFramework\Addons\HTMLServerComponents Instance of itself.
      */
-    public function addAlias(string $alias, string $original)
+    public function addAlias(string $alias, string $original): self
     {
-        $this->aliases[] = ['alias' => $alias, 'original' => $original];
+        $this->aliases[$alias] = $original;
+        return $this;
+    }
+
+    /**
+     * Defines a new tag
+     * 
+     * @param string $tagName The alias
+     * @param string $src The original source name
+     * @return IvoPetkov\BearFramework\Addons\HTMLServerComponents Instance of itself.
+     */
+    public function addTag(string $tagName, string $src): self
+    {
+        $this->tagNames[$tagName] = $src;
         return $this;
     }
 
@@ -54,19 +74,31 @@ class HTMLServerComponents
      */
     public function process($content, array $options = [])
     {
-        if ((is_string($content) && strpos($content, '<component') !== false) || $content instanceof \IvoPetkov\HTMLServerComponent) {
+        $found = false;
+        if (is_string($content)) {
+            $tagNames = array_keys($this->tagNames);
+            $tagNames[] = 'component';
+            foreach ($tagNames as $tagName) {
+                if (strpos($content, '<' . $tagName) !== false) {
+                    $found = true;
+                    break;
+                }
+            }
+        }
+        if ($content instanceof \IvoPetkov\HTMLServerComponent) {
+            $found = true;
+        }
+        if ($found) {
             if (self::$newCompilerCache === null) {
                 self::$newCompilerCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
             }
             $compiler = clone(self::$newCompilerCache);
-            foreach ($this->aliases as $alias) {
-                $compiler->addAlias($alias['alias'], $alias['original']);
+            foreach ($this->aliases as $alias => $original) {
+                $compiler->addAlias($alias, $original);
             }
-//            $app = \BearFramework\App::get();
-//            if (!isset($options['variables'])) {
-//                $options['variables'] = [];
-//            }
-//            $options['variables']['app'] = $app;
+            foreach ($this->tagNames as $tagName => $src) {
+                $compiler->addTag($tagName, $src);
+            }
             return $compiler->process($content, $options);
         }
         return $content;
