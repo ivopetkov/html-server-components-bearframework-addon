@@ -25,17 +25,21 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      * 
      * @param array $attributes The attributes of the component object
      * @param string $innerHTML The innerHTML of the component object
+     * @param string $tagName The tag name of the component object
      * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component A component object
      */
-    public function constructComponent(array $attributes = [], string $innerHTML = '')
+    public function makeComponent(array $attributes = [], string $innerHTML = '', string $tagName = 'component')
     {
         $app = \BearFramework\App::get();
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         }
         $component = clone(self::$newComponentCache);
-        $component->attributes = $attributes;
+        foreach ($attributes as $name => $value) {
+            $component->setAttribute($name, $value);
+        }
         $component->innerHTML = $innerHTML;
+        $component->tagName = $tagName;
         $app->hooks->execute('componentCreated', $component);
         return $component;
     }
