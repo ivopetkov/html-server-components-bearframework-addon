@@ -95,7 +95,7 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
         $result = $app->components->process('<component src="component1" />');
         $this->assertTrue($result === $expectedResult);
 
-        $component = $app->components->create();
+        $component = $app->components->make();
         $component->src = 'file:' . $app->config->appDir . '/component1.php';
         $result = $app->components->process($component);
         $this->assertTrue($result === $expectedResult);

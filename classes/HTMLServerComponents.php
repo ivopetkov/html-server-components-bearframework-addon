@@ -77,7 +77,7 @@ class HTMLServerComponents
      * 
      * @return \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component
      */
-    public function create()
+    public function make()
     {
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
