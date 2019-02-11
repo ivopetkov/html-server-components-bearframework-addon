@@ -9,6 +9,8 @@
 
 namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal;
 
+use BearFramework\App;
+
 /**
  * HTML Server Components compiler. Converts components code into HTML code.
  */
@@ -30,7 +32,7 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      */
     public function makeComponent(array $attributes = [], string $innerHTML = '', string $tagName = 'component')
     {
-        $app = \BearFramework\App::get();
+        $app = App::get();
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         }
@@ -40,7 +42,9 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
         }
         $component->innerHTML = $innerHTML;
         $component->tagName = $tagName;
-        $app->hooks->execute('componentCreated', $component);
+        if ($app->components->hasEventListeners('makeComponent')) {
+            $app->components->dispatchEvent('makeComponent', new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails($component));
+        }
         return $component;
     }
 

@@ -16,16 +16,6 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
     /**
      * 
      */
-    protected function setUp()
-    {
-        parent::setUp();
-        $app = $this->getApp();
-        $app->config->addonsDir = $this->getTempDir();
-    }
-
-    /**
-     * 
-     */
     public function testProccess()
     {
         $app = $this->getApp();
@@ -64,27 +54,35 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
     /**
      * 
      */
-    public function testDefaultVariables()
+    public function testEvents()
     {
         $app = $this->getApp();
 
-        $this->makeFile($app->config->appDir . '/component1.php', '<?php '
-                . '$app = \BearFramework\App::get(); '
-                . '$context = $app->context->get(__FILE__); '
-                . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
-        $result = $app->components->process('<component src="file:' . $app->config->appDir . '/component1.php">text1</component>');
-        $expectedResult = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>BearFramework\App\Context' . realpath($app->config->appDir) . 'text1</body></html>';
-        $this->assertTrue($result === $expectedResult);
+        $content = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>content1</body></html>';
+        $newContent = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>content2</body></html>';
+        $app->components->addEventListener('makeComponent', function(\IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails $details) use ($newContent) {
+            $details->component->setAttribute('src', 'data:base64,' . base64_encode($newContent));
+        });
+        $result = $app->components->process('<component src="data:base64,' . base64_encode($content) . '"></component>');
+        $this->assertTrue($result === $newContent);
+    }
 
-        $this->makeFile($app->config->addonsDir . '/vendor1/addon1/component1.php', '<?php '
+    /**
+     * 
+     */
+    public function testComponentVariable()
+    {
+        $app = $this->getApp();
+        $tempDir = $this->getTempDir();
+        $this->makeFile($tempDir . '/index.php', '<?php');
+        $app->contexts->add($tempDir);
+
+        $this->makeFile($tempDir . '/component1.php', '<?php '
                 . '$app = \BearFramework\App::get(); '
-                . '$context = $app->context->get(__FILE__); '
+                . '$context = $app->contexts->get(__FILE__); '
                 . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
-        $this->makeFile($app->config->addonsDir . '/vendor1/addon1/index.php', '');
-        \BearFramework\Addons::register('vendor1/addon1', $app->config->addonsDir . '/vendor1/addon1/');
-        $app->addons->add('vendor1/addon1');
-        $result = $app->components->process('<component src="file:' . $app->config->addonsDir . '/vendor1/addon1/component1.php">text1</component>');
-        $expectedResult = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>BearFramework\App\Context' . realpath($app->config->addonsDir . '/vendor1/addon1') . 'text1</body></html>';
+        $result = $app->components->process('<component src="file:' . $tempDir . '/component1.php">text1</component>');
+        $expectedResult = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>BearFramework\App\Context' . realpath($tempDir) . 'text1</body></html>';
         $this->assertTrue($result === $expectedResult);
     }
 
@@ -94,22 +92,23 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
     public function testFile()
     {
         $app = $this->getApp();
+        $tempDir = $this->getTempDir();
 
-        $this->makeFile($app->config->appDir . '/component1.php', '<!DOCTYPE html><html><head></head><body>content1<component src="file:' . $app->config->appDir . '/component2.php" /></body></html>');
-        $this->makeFile($app->config->appDir . '/component2.php', '<!DOCTYPE html><html><head></head><body>content2</body></html>');
+        $this->makeFile($tempDir . '/component1.php', '<!DOCTYPE html><html><head></head><body>content1<component src="file:' . $tempDir . '/component2.php" /></body></html>');
+        $this->makeFile($tempDir . '/component2.php', '<!DOCTYPE html><html><head></head><body>content2</body></html>');
 
-        $app->components->addAlias('component1', 'file:' . $app->config->appDir . '/component1.php');
+        $app->components->addAlias('component1', 'file:' . $tempDir . '/component1.php');
 
         $expectedResult = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>content1content2</body></html>';
 
-        $result = $app->components->process('<component src="file:' . $app->config->appDir . '/component1.php" />');
+        $result = $app->components->process('<component src="file:' . $tempDir . '/component1.php" />');
         $this->assertTrue($result === $expectedResult);
 
         $result = $app->components->process('<component src="component1" />');
         $this->assertTrue($result === $expectedResult);
 
         $component = $app->components->make();
-        $component->src = 'file:' . $app->config->appDir . '/component1.php';
+        $component->src = 'file:' . $tempDir . '/component1.php';
         $result = $app->components->process($component);
         $this->assertTrue($result === $expectedResult);
         $result = $app->components->process((string) $component);

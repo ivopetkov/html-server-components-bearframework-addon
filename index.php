@@ -11,19 +11,13 @@ use BearFramework\App;
 use IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 $app = App::get();
-$context = $app->context->get(__FILE__);
+$context = $app->contexts->get(__FILE__);
 
 $context->classes
-        ->add(HTMLServerComponents::class, 'classes/HTMLServerComponents.php')
-        ->add(HTMLServerComponents\Internal\Compiler::class, 'classes/HTMLServerComponents/Internal/Compiler.php')
-        ->add(HTMLServerComponents\Internal\Component::class, 'classes/HTMLServerComponents/Internal/Component.php');
+        ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents', 'classes/HTMLServerComponents.php')
+        ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents\*', 'classes/HTMLServerComponents/*.php');
 
-$app->shortcuts->add('components', function() {
-    return new HTMLServerComponents();
-});
-
-$app->hooks->add('responseCreated', function($response) use($app) {
-    if (strpos($response->content, '<component') !== false) { // $response instanceof App\Response\HTML does not update NotFound and TemporaryUnavailable responses
-        $response->content = $app->components->process($response->content);
-    }
-});
+$app->shortcuts
+        ->add('components', function() {
+            return new HTMLServerComponents();
+        });
