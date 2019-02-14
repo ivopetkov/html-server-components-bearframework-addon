@@ -1,7 +1,7 @@
 # HTML Server Components
 Addon for Bear Framework
 
-This addon brings HTML Server Components to [Bear Framework](https://bearframework.com/). It automatically converts components code into HTML code when the framework executes the `responseCreated` hook.
+This addon brings HTML Server Components to [Bear Framework](https://bearframework.com/).
 
 [![Build Status](https://travis-ci.org/ivopetkov/html-server-components-bearframework-addon.svg)](https://travis-ci.org/ivopetkov/html-server-components-bearframework-addon)
 [![Latest Stable Version](https://poser.pugx.org/ivopetkov/html-server-components-bearframework-addon/v/stable)](https://packagist.org/packages/ivopetkov/html-server-components-bearframework-addon)
