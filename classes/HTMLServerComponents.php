@@ -15,7 +15,7 @@ namespace IvoPetkov\BearFramework\Addons;
 class HTMLServerComponents
 {
 
-    use \BearFramework\App\EventsTrait;
+    use \BearFramework\EventsTrait;
 
     /**
      * Stores the added aliases.
