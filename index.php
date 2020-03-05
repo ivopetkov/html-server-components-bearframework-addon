@@ -11,7 +11,7 @@ use BearFramework\App;
 use IvoPetkov\BearFramework\Addons\HTMLServerComponents;
 
 $app = App::get();
-$context = $app->contexts->get(__FILE__);
+$context = $app->contexts->get(__DIR__);
 
 $context->classes
         ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents', 'classes/HTMLServerComponents.php')
