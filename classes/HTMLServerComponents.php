@@ -92,7 +92,7 @@ class HTMLServerComponents
         }
         if ($found) {
             if (self::$newCompilerCache === null) {
-                self::$newCompilerCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler();
+                self::$newCompilerCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Compiler($this);
             }
             $compiler = clone (self::$newCompilerCache);
             foreach ($this->aliases as $alias => $original) {

@@ -9,8 +9,6 @@
 
 namespace IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal;
 
-use BearFramework\App;
-
 /**
  * HTML Server Components compiler. Converts components code into HTML code.
  */
@@ -23,6 +21,26 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
     private static $newComponentCache = null;
 
     /**
+     *
+     */
+    private static $newMakeComponentEventDetailsCache = null;
+
+    /**
+     * 
+     * @var \IvoPetkov\BearFramework\Addons\HTMLServerComponents
+     */
+    private $components = null;
+
+    /**
+     * 
+     * @param \IvoPetkov\BearFramework\Addons\HTMLServerComponents $components
+     */
+    public function __construct(\IvoPetkov\BearFramework\Addons\HTMLServerComponents $components)
+    {
+        $this->components = $components;
+    }
+
+    /**
      * Constructs a component object
      * 
      * @param array $attributes The attributes of the component object
@@ -32,18 +50,20 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
      */
     public function makeComponent(array $attributes = [], string $innerHTML = '', string $tagName = 'component')
     {
-        $app = App::get();
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         }
         $component = clone (self::$newComponentCache);
-        foreach ($attributes as $name => $value) {
-            $component->setAttribute($name, $value);
-        }
+        $component->setAttributes($attributes);
         $component->innerHTML = $innerHTML;
         $component->tagName = $tagName;
-        if ($app->components->hasEventListeners('makeComponent')) {
-            $app->components->dispatchEvent('makeComponent', new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails($component));
+        if ($this->components->hasEventListeners('makeComponent')) {
+            if (self::$newMakeComponentEventDetailsCache === null) {
+                self::$newMakeComponentEventDetailsCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails();
+            }
+            $details = clone (self::$newMakeComponentEventDetailsCache);
+            $details->component = $component;
+            $this->components->dispatchEvent('makeComponent', $details);
         }
         return $component;
     }

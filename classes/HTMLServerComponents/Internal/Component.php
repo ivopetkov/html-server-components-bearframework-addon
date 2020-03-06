@@ -20,7 +20,5 @@ final class Component extends \IvoPetkov\HTMLServerComponent
      */
     function __construct()
     {
-        
     }
-
 }

@@ -19,16 +19,12 @@ class MakeComponentEventDetails
 
     /**
      * 
-     * @param \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component $component
      */
-    public function __construct(\IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component $component)
+    public function __construct()
     {
         $this
-                ->defineProperty('component', [
-                    'type' => \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component::class
-                ])
-        ;
-        $this->component = $component;
+            ->defineProperty('component', [
+                'type' => \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component::class
+            ]);
     }
-
 }
