@@ -88,7 +88,7 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
 
         $this->makeFile($tempDir . '/component1.php', '<?php '
                 . '$app = \BearFramework\App::get(); '
-                . '$context = $app->contexts->get(__FILE__); '
+                . '$context = $app->contexts->get(__DIR__); '
                 . '?><!DOCTYPE html><html><head></head><body><?= get_class($context);?><?= realpath($context->dir);?><?= $component->innerHTML;?></body></html>');
         $result = $app->components->process('<component src="file:' . $tempDir . '/component1.php">text1</component>');
         $result = $this->fixProcessResult($result);

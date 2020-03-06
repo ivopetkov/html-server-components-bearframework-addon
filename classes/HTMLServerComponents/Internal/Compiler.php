@@ -36,7 +36,7 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
         if (self::$newComponentCache === null) {
             self::$newComponentCache = new \IvoPetkov\BearFramework\Addons\HTMLServerComponents\Internal\Component();
         }
-        $component = clone(self::$newComponentCache);
+        $component = clone (self::$newComponentCache);
         foreach ($attributes as $name => $value) {
             $component->setAttribute($name, $value);
         }
@@ -47,5 +47,4 @@ final class Compiler extends \IvoPetkov\HTMLServerComponentsCompiler
         }
         return $component;
     }
-
 }
