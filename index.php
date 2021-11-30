@@ -14,10 +14,10 @@ $app = App::get();
 $context = $app->contexts->get(__DIR__);
 
 $context->classes
-        ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents', 'classes/HTMLServerComponents.php')
-        ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents\*', 'classes/HTMLServerComponents/*.php');
+    ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents', 'classes/HTMLServerComponents.php')
+    ->add('IvoPetkov\BearFramework\Addons\HTMLServerComponents\*', 'classes/HTMLServerComponents/*.php');
 
 $app->shortcuts
-        ->add('components', function() {
-            return new HTMLServerComponents();
-        });
+    ->add('components', function () {
+        return new HTMLServerComponents();
+    });
