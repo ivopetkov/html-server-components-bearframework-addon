@@ -68,7 +68,7 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
 
         $content = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>content1</body></html>';
         $newContent = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>content2</body></html>';
-        $app->components->addEventListener('makeComponent', function (\IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails $details) use ($newContent) {
+        $app->components->addEventListener('makeComponent', function (\IvoPetkov\BearFramework\Addons\HTMLServerComponents\MakeComponentEventDetails $details) use ($newContent): void {
             $details->component->setAttribute('src', 'data:base64,' . base64_encode($newContent));
         });
         $result = $app->components->process('<component src="data:base64,' . base64_encode($content) . '"></component>');
