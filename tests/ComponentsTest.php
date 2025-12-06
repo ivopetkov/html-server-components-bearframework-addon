@@ -93,7 +93,7 @@ class ComponentsTest extends BearFramework\AddonTests\PHPUnitTestCase
         $result = $app->components->process('<component src="file:' . $tempDir . '/component1.php">text1</component>');
         $result = $this->fixProcessResult($result);
         $expectedResult = '<!DOCTYPE html>' . "\n" . '<html><head></head><body>BearFramework\App\Context' . realpath($tempDir) . 'text1</body></html>';
-        $this->assertTrue($result === $expectedResult);
+        $this->assertEquals($expectedResult, $result);
     }
 
     /**
